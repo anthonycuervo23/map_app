@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:map_app/bloc/location/location_bloc.dart';
-import 'package:map_app/bloc/map/map_bloc.dart';
 
 //My imports
-import 'package:map_app/core/routes.dart';
+import 'package:map_app/bloc/location/location_bloc.dart';
+import 'package:map_app/bloc/map/map_bloc.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key key}) : super(key: key);
@@ -30,13 +29,14 @@ class _MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Carrots LAP Map app'),
-        ),
-        body: BlocBuilder<LocationBloc, LocationState>(
-            builder: (BuildContext context, state) {
-          return buildMap(state);
-        }));
+      appBar: AppBar(
+        title: Text('Carrots LAP Map app'),
+      ),
+      body: BlocBuilder<LocationBloc, LocationState>(
+          builder: (BuildContext context, state) {
+        return buildMap(state);
+      }),
+    );
   }
 
   Widget buildMap(LocationState state) {

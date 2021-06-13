@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "416142236274",
+    "project_id": "carrots-lap-project",
+    "storage_bucket": "carrots-lap-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:416142236274:android:a6089bbf174b04c8a200eb",
+        "android_client_info": {
+          "package_name": "com.jeancuervo.map_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "416142236274-cvoegbic2cvapsohutin8gontvc97qm2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPCYetvgXVREIkM6baJqBbKI184FAV9yo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "416142236274-cvoegbic2cvapsohutin8gontvc97qm2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
