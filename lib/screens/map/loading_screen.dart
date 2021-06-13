@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:map_app/screens/main_screen.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 //My imports
+import 'package:map_app/screens/main_screen.dart';
 import 'package:map_app/core/routes.dart';
 import 'package:map_app/helpers/main_helpers.dart';
-import 'package:map_app/screens/map/map_screen.dart';
 
 class LoadingScreen extends StatefulWidget {
   @override

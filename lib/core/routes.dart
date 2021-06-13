@@ -19,7 +19,7 @@ class AppRoutes {
         builder: (_) {
           switch (settings.name) {
             case map:
-              return MapScreen();
+              return CirclePointsView();
             case gpsAccess:
               return GpsAccessScreen();
             case loading:
