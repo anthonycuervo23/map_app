@@ -2,17 +2,16 @@ part of 'location_bloc.dart';
 
 @immutable
 class LocationState {
-  final bool isFollowing;
+  final bool follow;
   final bool locationExist;
   final LatLng location;
 
   LocationState(
-      {this.isFollowing = false, this.location, this.locationExist = false});
+      {this.follow = true, this.locationExist = false, this.location});
 
-  LocationState copyWith(
-      {bool isFollowing, bool locationExist, LatLng location}) {
+  LocationState copyWith({bool follow, bool locationExist, LatLng location}) {
     return LocationState(
-        isFollowing: isFollowing ?? this.isFollowing,
+        follow: follow ?? this.follow,
         locationExist: locationExist ?? this.locationExist,
         location: location ?? this.location);
   }

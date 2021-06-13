@@ -1,18 +1,18 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart' show LatLng;
 import 'package:meta/meta.dart';
 
-part 'location_state.dart';
+//My imports
 part 'location_event.dart';
+part 'location_state.dart';
 
 class LocationBloc extends Bloc<LocationEvent, LocationState> {
   LocationBloc() : super(LocationState());
 
   StreamSubscription<Position> _positionSubscription;
 
-  //listen to the user current location
   void startFollowing() {
     this._positionSubscription = Geolocator.getPositionStream(
       desiredAccuracy: LocationAccuracy.high,
@@ -20,7 +20,6 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
     ).listen((Position position) {
       final newLocation = LatLng(position.latitude, position.longitude);
       add(OnChangedLocation(newLocation));
-      // print(position);
     });
   }
 

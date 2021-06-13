@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 //My imports
 import 'package:map_app/screens/favorites/favorites_screen.dart';
-import 'package:map_app/screens/map/map_screen.dart';
+import 'package:map_app/screens/map/map_page.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -13,7 +13,7 @@ class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
   List<Widget> _widgetOptions = <Widget>[
-    CirclePointsView(),
+    MapScreen(),
     FavoritesScreen(),
   ];
 
