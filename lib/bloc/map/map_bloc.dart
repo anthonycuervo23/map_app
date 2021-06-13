@@ -99,6 +99,22 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     final currentPolylines = state.polylines;
     currentPolylines['my_destination_route'] = this._destinationRoute;
 
-    yield state.copyWith(polylines: currentPolylines);
+    //Markers
+    final starterMarker = Marker(
+        markerId: MarkerId('start'),
+        position: event.routeCoordinates[0],
+        infoWindow:
+            InfoWindow(title: 'My house', snippet: 'this is where I leave'));
+
+    final endMarker = Marker(
+      markerId: MarkerId('end'),
+      position: event.routeCoordinates[event.routeCoordinates.length - 1],
+    );
+
+    final newMarkers = {...state.markers};
+    newMarkers['start'] = starterMarker;
+    newMarkers['end'] = endMarker;
+
+    yield state.copyWith(polylines: currentPolylines, markers: newMarkers);
   }
 }

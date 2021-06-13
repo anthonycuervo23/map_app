@@ -33,6 +33,9 @@ class _MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Carrots Lab Project'),
+      ),
       body: Stack(
         children: [
           BlocBuilder<LocationBloc, LocationState>(
@@ -64,12 +67,12 @@ class _MapScreenState extends State<MapScreen> {
     return BlocBuilder<MapBloc, MapState>(builder: (context, state) {
       return GoogleMap(
         initialCameraPosition: cameraPosition,
-        //podemos crear un boton para cambiar el tipo de mapa con enum
         mapType: MapType.normal,
         compassEnabled: true,
         myLocationEnabled: true,
         myLocationButtonEnabled: false,
         zoomControlsEnabled: false,
+        markers: mapBloc.state.markers.values.toSet(),
         polylines: mapBloc.state.polylines.values.toSet(),
         onCameraMove: (cameraPosition) {
           mapBloc.add(OnMapMove(cameraPosition.target));

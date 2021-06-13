@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:map_app/screens/main_screen.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 //My imports
@@ -34,7 +35,7 @@ class _LoadingScreenState extends State<LoadingScreen>
       final bool gpsActived = await Geolocator.isLocationServiceEnabled();
       if (gpsActived) {
         Navigator.pushReplacement(
-            context, fadeInMapNavigation(context, MapScreen()));
+            context, fadeInMapNavigation(context, MainScreen()));
       }
     }
   }
@@ -66,7 +67,7 @@ class _LoadingScreenState extends State<LoadingScreen>
 
     if (permisoGPS && gpsActivo) {
       Navigator.pushReplacement(
-          context, fadeInMapNavigation(context, MapScreen()));
+          context, fadeInMapNavigation(context, MainScreen()));
       return '';
     } else if (!permisoGPS) {
       Navigator.pushReplacement(
