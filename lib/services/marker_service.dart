@@ -1,7 +1,5 @@
-import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
 
 //My imports
 import 'package:map_app/models/marker.dart';
@@ -12,17 +10,17 @@ class MarkerService extends MarkerRepository {
       FirebaseFirestore db, GlobalKey<ScaffoldMessengerState> scaffoldKey)
       : super(db, scaffoldKey);
 
-  //TODO: EDITAR
   @override
   Future<MapMarker> postMarker() async {
-    return await rootBundle
-        .loadString('assets/json/polyline.json')
-        .then((onValue) {
-      db
-          .collection('pathPolylines')
-          .doc()
-          .set({'polylines': json.decode(onValue)});
-    });
+    //TODO: create markers from app
+    // await db.collection('markers')
+    //     .add({
+    //       'name': name,
+    //       'latitude': latitude,
+    //       'longitude': longitude,
+    //     })
+    //     .then((value) => debugPrint("Location Added"))
+    //     .catchError((error) => debugPrint("Failed to add user: $error"));
   }
 
   @override

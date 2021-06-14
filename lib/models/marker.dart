@@ -5,7 +5,7 @@ class MapMarker {
   double long;
   String name;
 
-  LatLng get coordinate => LatLng(long, lat);
+  LatLng get coordinates => LatLng(long, lat);
 
   MapMarker({this.lat, this.long, this.name});
 
