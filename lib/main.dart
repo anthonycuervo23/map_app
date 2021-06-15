@@ -1,14 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:map_app/providers/cubic/map/map_bloc.dart';
-import 'package:map_app/providers/cubic/markers/marker_bloc.dart';
+import 'package:map_app/models/marker.dart';
+import 'package:map_app/providers/main/main_screen.dart';
+import 'package:map_app/providers/map/map_bloc.dart';
+import 'package:map_app/providers/markers/marker_bloc.dart';
 import 'package:provider/provider.dart';
 
 //My imports
 import 'package:map_app/core/main_theme.dart';
 import 'package:map_app/core/routes.dart';
-import 'package:map_app/screens/map/loading_screen.dart';
 import 'package:map_app/utils/custom_marker.dart';
 
 void main() async {
@@ -29,10 +30,16 @@ class MyApp extends StatelessWidget {
         initialRoute: AppRoutes.loading,
       ),
       providers: [
+        // ChangeNotifierProvider(create: (_) {
+        //   Stream<List<MapMarker>> _markerStream =
+        //       MarkersService(FirebaseFirestore.instance).getMarkers();
+        //   return MainScreenService(markerStream: _markerStream);
+        // }),
         Provider(create: (context) => CustomMarkerManager(), lazy: true),
-        ChangeNotifierProvider(create: (_) => MapService()),
+        ChangeNotifierProvider(create: (context) => MapService(context)),
         ChangeNotifierProvider(
-            create: (_) => MarkersService(FirebaseFirestore.instance)),
+            create: (context) =>
+                MarkersService(FirebaseFirestore.instance, context)),
       ],
     );
     //
