@@ -21,6 +21,7 @@ dependencies:
   cloud_firestore: ^2.2.2
   location: ^4.3.0
   google_fonts: ^2.1.0
+  geolocator: ^7.1.0
 
 
 
@@ -32,7 +33,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 flutter_intl:
-  enable: true
+  enable: false
   main_locale: en
   class_name: S
 
