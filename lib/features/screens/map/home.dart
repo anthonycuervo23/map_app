@@ -152,7 +152,7 @@ class _MapScreenState extends State<MapScreen>
             Stack(
               children: <Widget>[
                 Container(
-                    height: MediaQuery.of(context).size.height,
+                    height: MediaQuery.of(context).size.height - 56,
                     width: double.infinity,
                     child: mapRepository.mapToggle
                         ? GoogleMap(
@@ -184,7 +184,7 @@ class _MapScreenState extends State<MapScreen>
                             style: TextStyle(fontSize: 20.0),
                           ))),
                 Positioned(
-                    top: MediaQuery.of(context).size.height - 250.0,
+                    top: MediaQuery.of(context).size.height - 180.0,
                     left: 10.0,
                     child: Container(
                         height: 125.0,

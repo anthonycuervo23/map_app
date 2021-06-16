@@ -42,6 +42,10 @@ class MarkerRepository extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future createMarker(Map<String, dynamic> data) async {
+    await _firestore.collection('markers').add(data);
+  }
+
   void get _populateClients {
     markers.clear();
     _firestore.collection('markers').get().then((data) {
