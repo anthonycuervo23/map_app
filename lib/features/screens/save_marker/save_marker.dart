@@ -30,6 +30,7 @@ class _SaveMarkerScreenState extends State<SaveMarkerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -53,7 +54,8 @@ class _SaveMarkerScreenState extends State<SaveMarkerScreen> {
                         data['long'] = double.parse(data['long']);
                         await context
                             .read<MarkerRepository>()
-                            .createMarker(data);
+                            .createMarker(data)
+                            .then((value) => _formKey.currentState.reset());
                       } else {
                         showDialog(
                           context: context,
