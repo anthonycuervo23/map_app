@@ -6,6 +6,7 @@ import 'package:map_app/features/widgets/btn_add_bearing.dart';
 import 'package:map_app/features/widgets/btn_location.dart';
 import 'package:map_app/features/widgets/btn_remove_bearing.dart';
 import 'package:map_app/features/widgets/marker_card.dart';
+import 'package:map_app/features/widgets/save_button.dart';
 import 'package:provider/provider.dart';
 
 class MapScreen extends StatefulWidget {
@@ -46,6 +47,7 @@ class _MapScreenState extends State<MapScreen>
                       fontWeight: FontWeight.bold))
             ])),
         centerTitle: true,
+        leading: SaveButton(),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 15.0),

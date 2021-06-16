@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:map_app/core/repository/map_repository.dart';
 import 'package:map_app/core/repository/marker_repository.dart';
+import 'package:map_app/core/repository/page_repository.dart';
 import 'package:map_app/features/screens/navigator/navigator_screen.dart';
 import 'package:map_app/features/screens/splash/splash.dart';
 import 'package:map_app/generated/l10n.dart';
@@ -15,6 +16,7 @@ void main() {
     ChangeNotifierProvider(
         create: (context) =>
             MarkerRepository(context, FirebaseFirestore.instance)),
+    ChangeNotifierProvider(create: (_)=> PageRepository()),
     ChangeNotifierProvider(create: (context) => MapRepository(context)),
   ], child: MyApp()));
 }

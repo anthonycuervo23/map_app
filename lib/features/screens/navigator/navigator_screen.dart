@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:map_app/core/repository/page_repository.dart';
 import 'package:map_app/features/screens/map/home.dart';
 import 'package:map_app/features/screens/save_marker/save_marker.dart';
+import 'package:provider/provider.dart';
 
 class NavigatorScreen extends StatefulWidget {
   const NavigatorScreen({Key key}) : super(key: key);
@@ -10,7 +12,7 @@ class NavigatorScreen extends StatefulWidget {
 }
 
 class _NavigatorScreenState extends State<NavigatorScreen> {
-  PageController _pageController = PageController();
+  PageController pageController;
 
   List<Widget> _screen = [MapScreen(), SaveMarkerScreen()];
 
@@ -22,14 +24,20 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
   }
 
   void _onItemTapped(int selectedIndex) {
-    _pageController.jumpToPage(selectedIndex);
+    pageController.jumpToPage(selectedIndex);
+  }
+
+  @override
+  void initState() {
+    pageController = context.read<PageRepository>().pageController;
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
-        controller: _pageController,
+        controller: pageController,
         children: _screen,
         onPageChanged: _onPageChanged,
         physics: NeverScrollableScrollPhysics(),

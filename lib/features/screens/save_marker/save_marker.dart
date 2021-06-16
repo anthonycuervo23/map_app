@@ -3,11 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:map_app/core/repository/marker_repository.dart';
-import 'package:map_app/core/utils/decimalTextInputFormatter.dart';
 import 'package:map_app/features/widgets/alert_dialog.dart';
 import 'package:map_app/features/widgets/reusable_button.dart';
-import 'package:map_app/features/widgets/reusable_card.dart';
-import 'package:map_app/features/widgets/text_field_container.dart';
+import 'package:map_app/features/widgets/save_marker_form.dart';
 import 'package:provider/provider.dart';
 
 class SaveMarkerScreen extends StatefulWidget {
@@ -66,62 +64,6 @@ class _SaveMarkerScreenState extends State<SaveMarkerScreen> {
                       }
                     }),
         ],
-      ),
-    );
-  }
-}
-
-class SaveMarkerForm extends StatelessWidget {
-  const SaveMarkerForm({
-    Key key,
-    @required GlobalKey<FormBuilderState> formKey,
-  })  : _formKey = formKey,
-        super(key: key);
-
-  final GlobalKey<FormBuilderState> _formKey;
-  @override
-  Widget build(BuildContext context) {
-    return DefaultCard(
-      child: FormBuilder(
-        key: _formKey,
-        child: Column(
-          children: [
-            Text(
-              'Save a new marker',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 20),
-            TextFieldInput(
-              name: 'name',
-              hint: 'Marker name',
-              icon: Icons.drive_file_rename_outline,
-              validator: FormBuilderValidators.required(context),
-              inputAction: TextInputAction.next,
-            ),
-            TextFieldInput(
-              name: 'lat',
-              hint: 'latitude',
-              inputFormatters: [
-                DecimalTextInputFormatter(decimalRange: 6, signed: false)
-              ],
-              icon: Icons.add_location_alt,
-              validator: FormBuilderValidators.required(context),
-              inputAction: TextInputAction.next,
-              inputType: TextInputType.number,
-            ),
-            TextFieldInput(
-              name: 'long',
-              hint: 'longitude',
-              inputFormatters: [
-                DecimalTextInputFormatter(decimalRange: 6, signed: false)
-              ],
-              icon: Icons.add_location_alt,
-              validator: FormBuilderValidators.required(context),
-              inputAction: TextInputAction.done,
-              inputType: TextInputType.number,
-            ),
-          ],
-        ),
       ),
     );
   }
