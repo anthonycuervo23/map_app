@@ -1,0 +1,14 @@
+{
+  "navigatorMap": "Mapa",
+  "navigatorAddMarker": "Añadir marcador",
+  "appBarMarkers": "Crear marcador",
+  "nameRequired":"Nombre es obligatorio !",
+  "latitudeRequired":"Latitud es obligatorio !",
+  "longitudeRequired":"Longitude es obligatorio !",
+  "latitude": "Latitud",
+  "longitude": "Longitud",
+  "name": "nombre",
+  "add": "Añadir",
+  "weather": "Clima",
+  "save": "Guardar"
+}

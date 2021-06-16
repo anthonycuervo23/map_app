@@ -1,0 +1,14 @@
+{
+  "navigatorMap": "Map",
+  "navigatorAddMarker": "Add Marker",
+  "appBarMarkers": "Add Markers",
+  "nameRequired":"Name is required !",
+  "latitudeRequired":"Latitude is required !",
+  "longitudeRequired":"Longitude is required !",
+  "latitude": "Latitude",
+  "longitude": "Longitude",
+  "name": "name",
+  "add": "Add",
+  "weather": "Weather",
+  "save": "Save"
+}
