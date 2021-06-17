@@ -16,7 +16,7 @@ void main() {
     ChangeNotifierProvider(
         create: (context) =>
             MarkerRepository(context, FirebaseFirestore.instance)),
-    ChangeNotifierProvider(create: (_)=> PageRepository()),
+    ChangeNotifierProvider(create: (_) => PageRepository()),
     ChangeNotifierProvider(create: (context) => MapRepository(context)),
   ], child: MyApp()));
 }

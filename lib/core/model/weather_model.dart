@@ -13,17 +13,13 @@ class Weather {
   }
 }
 
-class Climate{
+class Climate {
   final List<Weather> weather;
   final double temp;
 
   Climate({this.weather, this.temp});
 
-  factory Climate.fromJson(Map<String, dynamic> parsedJson){
-    return Climate(
-      weather: parsedJson['weather'],
-      temp: parsedJson['temp']
-    );
+  factory Climate.fromJson(Map<String, dynamic> parsedJson) {
+    return Climate(weather: parsedJson['weather'], temp: parsedJson['temp']);
   }
-
 }

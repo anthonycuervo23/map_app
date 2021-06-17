@@ -85,7 +85,7 @@ class _MapScreenState extends State<MapScreen>
                   style: TextStyle(fontSize: 20.0),
                 )),
           Positioned(
-            top: MediaQuery.of(context).size.height - 180.0,
+            top: MediaQuery.of(context).size.height - 200.0,
             left: 10.0,
             child: MarkerCard(),
           )
