@@ -2,11 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:map_app/core/repository/map_repository.dart';
 import 'package:map_app/core/repository/marker_repository.dart';
-import 'package:map_app/features/widgets/btn_add_bearing.dart';
-import 'package:map_app/features/widgets/btn_location.dart';
-import 'package:map_app/features/widgets/btn_remove_bearing.dart';
-import 'package:map_app/features/widgets/marker_card.dart';
-import 'package:map_app/features/widgets/save_button.dart';
+import 'package:map_app/features/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
 class MapScreen extends StatefulWidget {

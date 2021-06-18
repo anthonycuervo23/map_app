@@ -1,6 +1,8 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:map_app/core/model/weather_model.dart';
+
 class NetworkHelper {
   NetworkHelper({this.url});
 
@@ -10,8 +12,9 @@ class NetworkHelper {
     http.Response response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
-      String data = response.body;
-      return jsonDecode(data);
+      Map<String, dynamic> data = jsonDecode(response.body);
+      final Forecast forecast = Forecast.fromJson(data);
+      return forecast;
     } else {
       throw Exception('Failed to load weather');
     }

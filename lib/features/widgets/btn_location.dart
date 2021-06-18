@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:map_app/core/repository/map_repository.dart';
-import 'package:map_app/core/repository/marker_repository.dart';
-import 'package:provider/provider.dart';
+part of 'widgets.dart';
 
 class BtnLocation extends StatefulWidget {
   const BtnLocation({Key key}) : super(key: key);

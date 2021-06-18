@@ -1,10 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:map_app/core/repository/marker_repository.dart';
-import 'package:map_app/core/utils/decimalTextInputFormatter.dart';
-import 'package:map_app/features/widgets/reusable_card.dart';
-import 'package:map_app/features/widgets/text_field_container.dart';
-import 'package:provider/provider.dart';
+part of 'widgets.dart';
 
 class SaveMarkerForm extends StatelessWidget {
   const SaveMarkerForm({

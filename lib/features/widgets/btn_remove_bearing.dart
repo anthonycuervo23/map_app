@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:map_app/core/repository/map_repository.dart';
-import 'package:map_app/core/repository/marker_repository.dart';
-import 'package:provider/provider.dart';
+part of 'widgets.dart';
 
 class BtnRemoveBearing extends StatefulWidget {
   const BtnRemoveBearing({Key key}) : super(key: key);
@@ -35,8 +31,8 @@ class _BtnRemoveBearingState extends State<BtnRemoveBearing> {
         .read<MapRepository>()
         .mapController
         .animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-            target: LatLng(markerRepository.currentMarker.position.latitude,
-                markerRepository.currentMarker.position.longitude),
+            target: LatLng(markerRepository.currentMarker.latitude,
+                markerRepository.currentMarker.longitude),
             bearing: markerRepository.currentBearing == 0.0
                 ? markerRepository.currentBearing
                 : markerRepository.currentBearing - 90.0,

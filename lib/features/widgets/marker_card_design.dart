@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+part of 'widgets.dart';
 
 class MarkerCardDesign extends StatelessWidget {
   final String markerName;

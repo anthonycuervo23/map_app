@@ -3,9 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:map_app/core/repository/marker_repository.dart';
-import 'package:map_app/features/widgets/alert_dialog.dart';
-import 'package:map_app/features/widgets/reusable_button.dart';
-import 'package:map_app/features/widgets/save_marker_form.dart';
+import 'package:map_app/features/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
 class SaveMarkerScreen extends StatefulWidget {
@@ -32,6 +30,7 @@ class _SaveMarkerScreenState extends State<SaveMarkerScreen> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          //Image.asset('assets/image/logo_splash.png'),
           SaveMarkerForm(formKey: _formKey),
           ReusableButton(
               child: _processing

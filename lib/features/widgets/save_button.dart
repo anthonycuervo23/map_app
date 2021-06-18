@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:map_app/core/repository/marker_repository.dart';
-import 'package:map_app/core/repository/page_repository.dart';
-import 'package:provider/provider.dart';
+part of 'widgets.dart';
 
 class SaveButton extends StatelessWidget {
   const SaveButton({Key key}) : super(key: key);
