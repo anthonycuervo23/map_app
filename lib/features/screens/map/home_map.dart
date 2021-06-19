@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+
+//My imports
 import 'package:map_app/core/repository/map_repository.dart';
 import 'package:map_app/core/repository/marker_repository.dart';
 import 'package:map_app/features/widgets/widgets.dart';
-import 'package:provider/provider.dart';
 
 class MapScreen extends StatefulWidget {
   @override

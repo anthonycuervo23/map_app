@@ -1,6 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+//My imports
 import 'package:map_app/core/model/weather_model.dart';
 
 class NetworkHelper {

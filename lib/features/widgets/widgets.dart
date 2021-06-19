@@ -13,7 +13,6 @@ import 'package:map_app/core/repository/page_repository.dart';
 import 'package:map_app/core/service/weather_service.dart';
 import 'package:map_app/core/utils/decimalTextInputFormatter.dart';
 
-
 part 'alert_dialog.dart';
 part 'btn_add_bearing.dart';
 part 'btn_location.dart';

@@ -1,3 +1,4 @@
+//My imports
 import 'package:map_app/core/model/weather_model.dart';
 import 'package:map_app/core/service/weather_network.dart';
 
@@ -17,27 +18,20 @@ class WeatherModel {
 
   String getWeatherSVGNetwork(int condition) {
     if (condition < 300) {
-      // return SvgPicture.asset('images/storm.svg', width: 70, height: 70,);
       return 'https://www.flaticon.com/svg/static/icons/svg/3026/3026385.svg';
     } else if (condition < 400) {
-      // return SvgPicture.asset('images/rain.svg', width: 70, height: 70,);
       return 'https://www.flaticon.com/svg/static/icons/svg/899/899693.svg';
     } else if (condition < 600) {
-      // return SvgPicture.asset('images/umbrella.svg️', width: 70, height: 70,);
       return 'https://www.flaticon.com/svg/static/icons/svg/2921/2921803.svg';
     } else if (condition < 700) {
-      // return SvgPicture.asset('images/snowflake.svg'️, width: 70, height: 70,);
       return 'https://www.flaticon.com/svg/static/icons/svg/2834/2834554.svg';
     } else if (condition < 800) {
-      // return SvgPicture.asset('images/fog.svg', width: 70, height: 70,);
       return 'https://www.flaticon.com/svg/static/icons/svg/2446/2446001.svg';
     } else if (condition == 800) {
       return 'https://www.flaticon.com/svg/static/icons/svg/146/146199.svg';
     } else if (condition <= 804) {
-      // return 'images/cloud.svg️';
       return 'https://www.flaticon.com/svg/static/icons/svg/899/899681.svg';
     } else {
-      // return '🤷‍';
       return 'https://www.flaticon.com/svg/static/icons/svg/2471/2471920.svg';
     }
   }

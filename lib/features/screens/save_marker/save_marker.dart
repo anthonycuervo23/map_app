@@ -9,7 +9,6 @@ import 'package:map_app/core/repository/marker_repository.dart';
 import 'package:map_app/core/repository/page_repository.dart';
 import 'package:map_app/features/widgets/widgets.dart';
 
-
 class SaveMarkerScreen extends StatefulWidget {
   const SaveMarkerScreen({Key key}) : super(key: key);
 
