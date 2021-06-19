@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+
+//My imports
 import 'package:map_app/core/service/weather_service.dart';
 
 class MapRepository extends ChangeNotifier {
@@ -30,7 +32,5 @@ class MapRepository extends ChangeNotifier {
           this._currentLocation.latitude, this._currentLocation.longitude);
       notifyListeners();
     });
-    // await WeatherModel().getLocationWeather(
-    //     this._currentLocation.latitude, this._currentLocation.longitude);
   }
 }
