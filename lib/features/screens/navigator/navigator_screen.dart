@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:map_app/core/repository/page_repository.dart';
-import 'package:map_app/features/screens/map/home.dart';
-import 'package:map_app/features/screens/save_marker/save_marker.dart';
 import 'package:provider/provider.dart';
+import 'package:bottom_navy_bar/bottom_navy_bar.dart';
+
+//My imports
+import 'package:map_app/core/repository/page_repository.dart';
+import 'package:map_app/features/screens/map/home_map.dart';
+import 'package:map_app/features/screens/save_marker/save_marker.dart';
 
 class NavigatorScreen extends StatefulWidget {
   const NavigatorScreen({Key key}) : super(key: key);
@@ -24,7 +27,8 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
   }
 
   void _onItemTapped(int selectedIndex) {
-    pageController.jumpToPage(selectedIndex);
+    pageController.animateToPage(selectedIndex,
+        duration: Duration(milliseconds: 500), curve: Curves.ease);
   }
 
   @override
@@ -42,20 +46,23 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
         onPageChanged: _onPageChanged,
         physics: NeverScrollableScrollPhysics(),
       ),
-      bottomNavigationBar: BottomNavigationBar(onTap: _onItemTapped, items: [
-        BottomNavigationBarItem(
-            icon: Icon(
-              Icons.map,
-              color: _selectedIndex == 0 ? Colors.red : Colors.grey,
-            ),
-            label: 'Map'),
-        BottomNavigationBarItem(
-            icon: Icon(
-              Icons.control_point,
-              color: _selectedIndex == 1 ? Colors.red : Colors.grey,
-            ),
-            label: 'Save marker'),
-      ]),
+      bottomNavigationBar: BottomNavyBar(
+          selectedIndex: _selectedIndex,
+          onItemSelected: _onItemTapped,
+          items: [
+            BottomNavyBarItem(
+                icon: Icon(
+                  Icons.map,
+                  color: _selectedIndex == 0 ? Colors.red : Colors.grey,
+                ),
+                title: Text('Map')),
+            BottomNavyBarItem(
+                icon: Icon(
+                  Icons.control_point,
+                  color: _selectedIndex == 1 ? Colors.red : Colors.grey,
+                ),
+                title: Text('Save marker')),
+          ]),
     );
   }
 }

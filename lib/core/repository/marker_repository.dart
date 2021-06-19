@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+
+//My imports
 import 'package:map_app/core/model/marker_model.dart';
 import 'package:map_app/core/model/weather_model.dart';
 import 'package:map_app/core/service/weather_service.dart';
@@ -25,7 +27,7 @@ class MarkerRepository extends ChangeNotifier {
 
     _populateClients;
   }
-
+  FirebaseFirestore get firestore => _firestore;
   bool get resetToggle => _resetToggle;
   double get currentBearing => _currentBearing;
   MarkerModel get currentMarker => _currentMarker;
@@ -52,10 +54,15 @@ class MarkerRepository extends ChangeNotifier {
   }
 
   Future createMarker(Map<String, dynamic> data) async {
-    await _firestore.collection('markers').add(data);
+    await _firestore
+        .collection('markers')
+        .doc('${this.latitude + this.longitude}')
+        .set(data);
   }
 
   Future<void> get _populateClients {
+    customMarkers.clear();
+    markers.clear();
     _firestore.collection('markers').snapshots().listen((data) {
       if (data.docs.isNotEmpty) {
         this._markersToggle = true;
@@ -64,11 +71,10 @@ class MarkerRepository extends ChangeNotifier {
           this._weatherDataNewMarker =
               await WeatherModel().getLocationWeather(doc['lat'], doc['long']);
           customMarkers.add(MarkerModel(
+              id: doc.id,
               name: doc['name'],
-              description: doc['description'],
               latitude: doc['lat'],
               longitude: doc['long'],
-              id: doc['id'],
               weather: this._weatherDataNewMarker));
           markers.add(Marker(
               markerId: MarkerId((doc['lat'] + doc['long']).toString()),
@@ -84,6 +90,14 @@ class MarkerRepository extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> deleteMarker(String id) async {
+    await _firestore.collection('markers').doc(id).delete();
+  }
+
+  // Future<void> updateMarker(String id, Map data) async {
+  //   await _firestore.collection('markers').doc(id).update(data);
+  // }
+
   Future<void> addMarker(LatLng pos) async {
     this._newMarker = Marker(
         markerId: MarkerId('point'),
@@ -97,9 +111,9 @@ class MarkerRepository extends ChangeNotifier {
 
     this._longitude = this._newMarker.position.longitude;
     this._latitude = this._newMarker.position.latitude;
-//Weather for the marker I create on long press
-//     this._weatherDataNewMarker = await WeatherModel()
-//         .getLocationWeather(this._latitude, this._longitude);
+    //Weather for the marker I create on long press
+    this._weatherDataNewMarker = await WeatherModel()
+        .getLocationWeather(this._latitude, this._longitude);
 
     notifyListeners();
   }

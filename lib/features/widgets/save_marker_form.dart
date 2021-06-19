@@ -26,7 +26,7 @@ class SaveMarkerForm extends StatelessWidget {
               hint: 'Marker name',
               icon: Icons.drive_file_rename_outline,
               validator: FormBuilderValidators.required(context),
-              inputAction: TextInputAction.next,
+              inputAction: TextInputAction.done,
             ),
             TextFieldInput(
               initialValue:

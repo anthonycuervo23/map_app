@@ -17,22 +17,33 @@ class _MarkerCardState extends State<MarkerCard> {
   Widget build(BuildContext context) {
     final markerRepository = context.watch<MarkerRepository>();
     List<MarkerModel> clients = markerRepository.customMarkers;
-    return Container(
-      height: 125.0,
-      width: MediaQuery.of(context).size.width,
-      child: markerRepository.markersToggle
-          ? PageView.builder(
-              onPageChanged: (value) {
-                markerRepository.setCurrentMarker(clients[value]);
-                markerRepository.setCurrentBearing(90.0);
-                zoomInMarker(clients[value]);
-              },
-              itemCount: clients.length,
-              controller: PageController(viewportFraction: 0.8),
-              itemBuilder: (context, index) =>
-                  MarkerListTile(currentMarker: clients[index]),
-            )
-          : Container(),
+    return GestureDetector(
+      onLongPress: () {
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return DeleteAlertDialog(
+                content: 'Press Ok to delete',
+              );
+            });
+      },
+      child: Container(
+        height: 125.0,
+        width: MediaQuery.of(context).size.width,
+        child: markerRepository.markersToggle
+            ? PageView.builder(
+                onPageChanged: (value) {
+                  markerRepository.setCurrentMarker(clients[value]);
+                  markerRepository.setCurrentBearing(90.0);
+                  zoomInMarker(clients[value]);
+                },
+                itemCount: clients.length,
+                controller: PageController(viewportFraction: 0.8),
+                itemBuilder: (context, index) =>
+                    MarkerListTile(currentMarker: clients[index]),
+              )
+            : Container(),
+      ),
     );
   }
 
@@ -65,7 +76,6 @@ class _MarkerListTileState extends State<MarkerListTile> {
 
   @override
   void initState() {
-    //fetchWeather();
     super.initState();
   }
 
