@@ -44,7 +44,7 @@ class _MyAppState extends State<MyApp> {
             theme: ThemeData(
               textTheme:
                   GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
-              primarySwatch: Colors.orange,
+              primarySwatch: Colors.indigo,
             ),
             home: NavigatorScreen(),
             localizationsDelegates: [

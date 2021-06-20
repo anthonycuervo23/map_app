@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:map_app/core/constants/constants.dart';
 
 //My imports
 import 'package:map_app/core/model/marker_model.dart';
@@ -55,7 +56,7 @@ class MarkerRepository extends ChangeNotifier {
 
   Future createMarker(Map<String, dynamic> data) async {
     await _firestore
-        .collection('markers')
+        .collection(AppDBConstants.markersCollection)
         .doc('${this.latitude + this.longitude}')
         .set(data);
   }
@@ -63,26 +64,33 @@ class MarkerRepository extends ChangeNotifier {
   Future<void> get _populateClients {
     customMarkers.clear();
     markers.clear();
-    _firestore.collection('markers').snapshots().listen((data) {
+    _firestore
+        .collection(AppDBConstants.markersCollection)
+        .snapshots()
+        .listen((data) {
       if (data.docs.isNotEmpty) {
         this._markersToggle = true;
 
         data.docs.forEach((doc) async {
-          this._weatherDataNewMarker =
-              await WeatherModel().getLocationWeather(doc['lat'], doc['long']);
+          this._weatherDataNewMarker = await WeatherModel().getLocationWeather(
+              doc[AppDBConstants.latitudeDoc],
+              doc[AppDBConstants.longitudeDoc]);
           customMarkers.add(MarkerModel(
               id: doc.id,
-              name: doc['name'],
-              latitude: doc['lat'],
-              longitude: doc['long'],
+              name: doc[AppDBConstants.nameDoc],
+              latitude: doc[AppDBConstants.latitudeDoc],
+              longitude: doc[AppDBConstants.longitudeDoc],
               weather: this._weatherDataNewMarker));
           markers.add(Marker(
-              markerId: MarkerId((doc['lat'] + doc['long']).toString()),
-              position: LatLng(doc['lat'], doc['long']),
+              markerId: MarkerId((doc[AppDBConstants.latitudeDoc] +
+                      doc[AppDBConstants.longitudeDoc])
+                  .toString()),
+              position: LatLng(doc[AppDBConstants.latitudeDoc],
+                  doc[AppDBConstants.longitudeDoc]),
               icon: BitmapDescriptor.defaultMarkerWithHue(
                 BitmapDescriptor.hueCyan,
               ),
-              infoWindow: InfoWindow(title: doc['name'])));
+              infoWindow: InfoWindow(title: doc[AppDBConstants.nameDoc])));
         });
       }
     });
@@ -91,7 +99,10 @@ class MarkerRepository extends ChangeNotifier {
   }
 
   Future<void> deleteMarker(String id) async {
-    await _firestore.collection('markers').doc(id).delete();
+    await _firestore
+        .collection(AppDBConstants.markersCollection)
+        .doc(id)
+        .delete();
   }
 
   // Future<void> updateMarker(String id, Map data) async {

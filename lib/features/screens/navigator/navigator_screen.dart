@@ -61,7 +61,7 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                   Icons.control_point,
                   color: _selectedIndex == 1 ? Colors.red : Colors.grey,
                 ),
-                title: Text('Save marker')),
+                title: Text('Add marker')),
           ]),
     );
   }

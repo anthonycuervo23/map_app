@@ -10,7 +10,7 @@ class DefaultCard extends StatelessWidget {
       padding: const EdgeInsets.only(left: 24, right: 24),
       child: Card(
         elevation: 0,
-        color: Colors.deepOrangeAccent,
+        color: Colors.indigo,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all((Radius.circular(10)))),
         child: Padding(

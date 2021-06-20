@@ -1,4 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:map_app/core/constants/constants.dart';
+import 'package:map_app/core/themes/map_theme.dart';
 import 'package:provider/provider.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -33,14 +37,14 @@ class _MapScreenState extends State<MapScreen>
             text: TextSpan(
                 text: "CARROTS",
                 style: TextStyle(
-                    color: Colors.black87,
+                    color: AppColors.titleColor,
                     fontSize: 30.0,
                     fontWeight: FontWeight.bold),
                 children: [
               TextSpan(
                   text: " Map",
                   style: TextStyle(
-                      color: Colors.deepOrange,
+                      color: AppColors.title2Color,
                       fontSize: 30.0,
                       fontWeight: FontWeight.bold))
             ])),
@@ -59,6 +63,10 @@ class _MapScreenState extends State<MapScreen>
               ? GoogleMap(
                   onMapCreated: (controller) {
                     mapRepository.setMapController(controller);
+                    context
+                        .read<MapRepository>()
+                        .mapController
+                        .setMapStyle(jsonEncode((uberMapTheme)));
                   },
                   onLongPress: markerRepository.addMarker,
                   onCameraMove: (cameraPosition) =>
